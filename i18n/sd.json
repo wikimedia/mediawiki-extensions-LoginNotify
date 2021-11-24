@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tweety"
+			"Tweety",
+			"Mehtab ahmed"
 		]
 	},
-	"echo-category-title-login-fail": "نامڪمل داخل ٿيڻ جون ڪوششون",
-	"echo-category-title-login-success": "اڻ تصديقل ڊوائيس ذريعي داخل ٿيڻ"
+	"echo-category-title-login-fail": "داخل ٿيڻ جون ناڪام ڪوششون",
+	"echo-category-title-login-success": "اڻ-سونھين ڊوائيس ذريعي داخل ٿيڻ"
 }
