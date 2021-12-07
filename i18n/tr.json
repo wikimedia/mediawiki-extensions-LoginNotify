@@ -6,7 +6,8 @@
 			"Joseph",
 			"MuratTheTurkish",
 			"Sayginer",
-			"ToprakM"
+			"ToprakM",
+			"Ahmetlii"
 		]
 	},
 	"loginnotify-desc": "Tanınmayan cihaz ve/veya IP adreslerinden şüpheli oturum açma girişimleri hakkında kullanıcıları bilgilendirir",
@@ -19,6 +20,6 @@
 	"notification-loginnotify-login-success-email-subject": "{{SITENAME}} sitesine daha önce kullanmadığınız bir cihazdan $1 olarak giriş yapıldı",
 	"notification-header-login-success": "Birisi (muhtemelen {{GENDER:$1|siz}}) yakın zamanda hesabınıza yeni bir cihazdan oturum açtı. Eğer bu işlemi siz yaptıysanız bu mesajı gözardı edebilirsiniz. Ancak bu işlemi yapan siz değilseniz, parolanızı değiştirmeniz ve hesap etkinliğini kontrol etmeniz önerilir.",
 	"notification-new-bundled-header-login-fail": "En son giriş yaptığınız zamandan beri hesabınıza yeni bir cihazdan  giriş yapmak için {{PLURAL:$1|'''başarısız bir girişim oldu'''|'''başarısız $1 girişim oldu'''}}. Eğer siz değilseniz, lütfen hesabınızın güçlü bir şifresi olduğundan emin olun.",
-	"notification-known-header-login-fail": "{{PLURAL:$1|'''başarısız bir girişim oldu''' |'''$1 başarısız oldu'''}}, hesabınıza son giriş yaptığınız günden bu yana giriş yapmayı denedi. Lütfen, hesabınızın güçlü bir şifresi olduğundan emin olun.",
+	"notification-known-header-login-fail": "Hesabınıza en son giriş yaptığınızdan bu yana hesabınıza girmek için {{PLURAL:$1|'''başarısız bir girişim oldu''' |'''$1 başarısız girişim oldu'''}}. Eğer giriş yapmaya çalışan siz değilseniz, lütfen hesabınızın güçlü bir şifresi olduğundan emin olun.",
 	"notification-new-unbundled-header-login-fail": "Hesabınıza yeni bir cihazdan giriş yapmak için {{PLURAL:$1|'''başarısız bir girişim oldu'''|'''başarısız girişimler oldu'''}}. Lütfen hesabınızın güçlü bir şifresi olduğundan emin olun."
 }
