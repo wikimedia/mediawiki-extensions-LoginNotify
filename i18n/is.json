@@ -4,5 +4,7 @@
 			"Sveinn í Felli"
 		]
 	},
+	"echo-category-title-login-fail": "Misheppnaðar tilraunir til innskráningar",
+	"echo-category-title-login-success": "Innskráning af ókunnuglegu tæki",
 	"loginnotify-primary-link": "Hjálp"
 }
