@@ -5,11 +5,12 @@
 			"Liuxinyu970226",
 			"Mar(c)",
 			"Mormegil",
-			"Niharika"
+			"Niharika",
+			"Verdy p"
 		]
 	},
 	"loginnotify-desc": "{{desc|name=LoginNotify|url=https://www.mediawiki.org/wiki/Extension:LoginNotify}}",
-	"echo-category-title-login-fail": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-login-fail}}",
+	"echo-category-title-login-fail": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-login-fail}}\n{{Identical|Login failed}}",
 	"echo-pref-tooltip-login-fail": "{{doc-echo-pref-tooltip|title=Echo-category-title-login-fail}}",
 	"echo-category-title-login-success": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-login-success}}",
 	"echo-pref-tooltip-login-success": "{{doc-echo-pref-tooltip|title=Echo-category-title-login-success}}",
