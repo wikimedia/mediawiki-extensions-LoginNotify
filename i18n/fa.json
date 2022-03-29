@@ -3,15 +3,16 @@
 		"authors": [
 			"Huji",
 			"Ladsgroup",
-			"Reza1615"
+			"Reza1615",
+			"Beginneruser"
 		]
 	},
 	"loginnotify-desc": "آگاه‌سازی کاربران وقتی ورود ناموفق به سامانه از دستگاه یا/و نشانی آي‌پی ناشناس به حسابشان اتفاق افتاده.",
 	"echo-category-title-login-fail": "تلاش ناموفق برای ورود به حساب",
-	"echo-pref-tooltip-login-fail": "آگاه‌سازی من وقتی تلاش ناموفق برای ورود به سامانه توسط حساب کاربری من وجود داشت.",
+	"echo-pref-tooltip-login-fail": "آگاه‌سازی من وقتی تلاش ناموفق برای ورود به سامانه توسط حساب من وجود داشت.",
 	"echo-category-title-login-success": "ورود به سامانه از دستگاه ناشناس",
 	"echo-pref-tooltip-login-success": "آگاه‌سازی من زمانی که فردی ورود ناموفق به سامانه از دستگاه یا/و نشانی آي‌پی ناشناس به حساب من داشته‌است.",
-	"loginnotify-primary-link": "کمک",
+	"loginnotify-primary-link": "راهنما",
 	"notification-loginnotify-login-fail-email-subject": "{{PLURAL:$2|تلاش ناموفق|چندین تلاش ناموفق}} برای ورود به سامانهٔ {{SITENAME}} به عنوان $1",
 	"notification-loginnotify-login-success-email-subject": "ورود به سامانهٔ {{SITENAME}} به عنوان $1 از دستگاهی که اخیرا استفاده نکرده‌اید.",
 	"notification-header-login-success": "فردی (شاید  {{GENDER:$1|خودتان}}) اخیراً به حساب کاربری شما از دستگاه جدید وارد شده‌است. اگر این شما بودید، این پیام را نادیده بگیرید وگرنه گذرواژه‌تان را تغییر دهید و مشارکت‌هایتان را بررسی کنید.",
