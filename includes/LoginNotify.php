@@ -29,6 +29,7 @@ use WikiMap;
 use Wikimedia\Assert\Assert;
 use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IMaintainableDatabase;
 
 /**
  * Handle sending notifications on login from unknown source.
@@ -289,7 +290,7 @@ class LoginNotify implements LoggerAwareInterface {
 					$lb = MediaWikiServices::getInstance()
 						->getDBLoadBalancerFactory()
 						->getMainLB( $wiki );
-					$dbrLocal = $lb->getConnection( DB_REPLICA, [], $wiki );
+					$dbrLocal = $lb->getConnectionRef( DB_REPLICA, [], $wiki );
 
 					if ( !$this->hasCheckUserTables( $dbrLocal ) ) {
 						// Skip this wiki, no checkuser table.
@@ -384,10 +385,10 @@ class LoginNotify implements LoggerAwareInterface {
 	/**
 	 * Does this wiki have a checkuser table?
 	 *
-	 * @param IDatabase $dbr Database to check
+	 * @param IMaintainableDatabase $dbr Database to check
 	 * @return bool
 	 */
-	private function hasCheckUserTables( IDatabase $dbr ) {
+	private function hasCheckUserTables( IMaintainableDatabase $dbr ) {
 		if ( !$dbr->tableExists( 'cu_changes', __METHOD__ ) ) {
 			$this->log->warning( "LoginNotify: No checkuser table on {wikiId}", [
 				'method' => __METHOD__,
