@@ -8,7 +8,7 @@
 			"Upwinxp"
 		]
 	},
-	"loginnotify-desc": "Obvesti uporabnike o sumljivih prijavah iz neznanih naprav in/ali IP naslovov",
+	"loginnotify-desc": "Obvešča uporabnike o sumljivih prijavah iz neznanih naprav in/ali IP-naslovov",
 	"echo-category-title-login-fail": "Neuspeli poskusi prijave",
 	"echo-pref-tooltip-login-fail": "Obvesti me v primeru več neuspešnih poskusov prijave.",
 	"echo-category-title-login-success": "Prijava iz neznane naprave",
