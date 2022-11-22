@@ -5,6 +5,6 @@
 		]
 	},
 	"echo-category-title-login-fail": "Misheppnaðar tilraunir til innskráningar",
-	"echo-category-title-login-success": "Innskráning af ókunnuglegu tæki",
+	"echo-category-title-login-success": "Innskráning frá óþekktu tæki",
 	"loginnotify-primary-link": "Hjálp"
 }
