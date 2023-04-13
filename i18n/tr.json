@@ -13,7 +13,7 @@
 	"loginnotify-desc": "Tanınmayan cihaz ve/veya IP adreslerinden şüpheli oturum açma girişimleri hakkında kullanıcıları bilgilendirir",
 	"echo-category-title-login-fail": "Başarısız oturum açma girişimleri",
 	"echo-pref-tooltip-login-fail": "Hesabımda oturum açma girişimi başarısız olduğunda bana bildir.",
-	"echo-category-title-login-success": "Tanıdık olmayan bir cihazdan giriş yapın",
+	"echo-category-title-login-success": "Tanıdık olmayan bir cihazdan giriş",
 	"echo-pref-tooltip-login-success": "Birisi hesabıma daha önce kullanmadığım bir cihaz ve/veya IP adresinden giriş yaptığı zaman bana bildir.",
 	"loginnotify-primary-link": "Yardım",
 	"notification-loginnotify-login-fail-email-subject": "{{SITENAME}} sitesine $1 kullanıcısı olarak {{PLURAL:$2|başarısız giriş|birden çok başarısız giriş}} denemesi",
