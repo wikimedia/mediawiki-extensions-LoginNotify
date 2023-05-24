@@ -7,10 +7,11 @@
 			"Otokoume",
 			"Suzukaze-c",
 			"Takot",
-			"Yusuke1109"
+			"Yusuke1109",
+			"Shirayuki"
 		]
 	},
-	"loginnotify-desc": "身に覚えのない端末およびIPアドレスからのログインがあったときにユーザに通知する",
+	"loginnotify-desc": "身に覚えのない端末および IP アドレスからのログインがあったときに利用者に通知する",
 	"echo-category-title-login-fail": "ログインの失敗",
 	"echo-pref-tooltip-login-fail": "自分のアカウントへのログインが失敗したときに通知する。",
 	"echo-category-title-login-success": "身に覚えのない端末からのログイン",
