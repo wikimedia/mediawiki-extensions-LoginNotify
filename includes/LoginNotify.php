@@ -802,6 +802,8 @@ class LoginNotify implements LoggerAwareInterface {
 		$isKnown = $this->isKnownSystemSlow( $user, $subnet, $resultSoFar );
 		if ( !$isKnown ) {
 			$this->recordLoginFailureFromUnknownSystem( $user );
+		} else {
+			$this->recordLoginFailureFromKnownSystem( $user );
 		}
 	}
 
