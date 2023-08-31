@@ -30,28 +30,27 @@ class Hooks implements
 	 *
 	 * @param AuthenticationResponse $ret Is login successful?
 	 * @param User|null $user User object on successful auth
-	 * @param string $username Username for failed attempts.
+	 * @param string|null $username Username for failed attempts.
 	 * @param string[] $extraData
 	 */
 	public function onAuthManagerLoginAuthenticateAudit(
 		$ret, $user, $username, $extraData
 	) {
-		if ( $user ) {
-			$userObj = $user;
-		} else {
-			$userObj = $this->userFactory->newFromName( $username, UserFactory::RIGOR_USABLE );
+		if ( !$user && $username !== null ) {
+			$user = $this->userFactory->newFromName( $username, UserFactory::RIGOR_USABLE );
 		}
-		if ( !$userObj ) {
+
+		if ( !$user ) {
 			return;
 		}
 
 		if ( $ret->status === AuthenticationResponse::PASS ) {
-			self::doSuccessfulLogin( $userObj );
+			self::doSuccessfulLogin( $user );
 		} elseif (
 			$ret->status === AuthenticationResponse::FAIL
 			&& $ret->message->getKey() !== 'login-throttled'
 		) {
-			self::doFailedLogin( $userObj );
+			self::doFailedLogin( $user );
 		}
 		// Other statuses include Abstain, Redirect, or UI. We ignore such
 		// statuses.
