@@ -12,7 +12,7 @@
 	"echo-category-title-login-fail": "Epäonnistuneet kirjautumisyritykset",
 	"echo-pref-tooltip-login-fail": "Ilmoita minulle, kun tunnuksellani on yritetty epäonnistuneesti kirjautua.",
 	"echo-category-title-login-success": "Kirjautuminen tuntemattomalta laitteelta",
-	"echo-pref-tooltip-login-success": "Ilmoita minulle, kun tunnukselleni kirjaudutaan tuntemattomalta laitteelta ja IP-osoitteesta.",
+	"echo-pref-tooltip-login-success": "Ilmoita, kun tunnukselleni kirjaudutaan tuntemattomalta laitteelta ja IP-osoitteesta.",
 	"loginnotify-primary-link": "Ohje",
 	"notification-loginnotify-login-fail-email-subject": "{{PLURAL:$2|Epäonnistunut yritys|Epäonnistuneita yrityksiä}} kirjautua sisään {{GRAMMAR:illative|{{SITENAME}}}} tunnuksella $1",
 	"notification-loginnotify-login-success-email-subject": "Kirjautuminen {{GRAMMAR:illative|{{SITENAME}}}} käyttäjänä $1 laitteesta, jota et ole viime aikoina käyttänyt",
