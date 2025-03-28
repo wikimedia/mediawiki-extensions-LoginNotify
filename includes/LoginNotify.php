@@ -189,7 +189,7 @@ class LoginNotify implements LoggerAwareInterface {
 	 * @param WebRequest $request
 	 * @return string One of USER_* constants
 	 */
-	private function isKnownSystemFast( User $user, WebRequest $request ) {
+	public function isKnownSystemFast( User $user, WebRequest $request ) {
 		$logContext = [ 'user' => $user->getName() ];
 		$result = $this->userIsInCookie( $user, $request );
 		if ( $result === self::USER_KNOWN ) {
