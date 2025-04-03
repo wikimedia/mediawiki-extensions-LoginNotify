@@ -12,6 +12,7 @@ class PurgeSeenJob extends \Job {
 		$this->loginNotify = $loginNotify;
 	}
 
+	/** @inheritDoc */
 	public function run() {
 		$minId = $this->getParams()['minId'];
 		$this->loginNotify->purgeSeen( $minId );
