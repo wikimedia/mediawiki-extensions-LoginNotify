@@ -8,13 +8,13 @@
 
 namespace LoginNotify;
 
-use JobQueueGroup;
-use JobSpecification;
 use LogicException;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\WebRequest;

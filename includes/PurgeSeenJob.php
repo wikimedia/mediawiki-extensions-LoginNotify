@@ -2,9 +2,10 @@
 
 namespace LoginNotify;
 
+use MediaWiki\JobQueue\Job;
 use MediaWiki\Title\Title;
 
-class PurgeSeenJob extends \Job {
+class PurgeSeenJob extends Job {
 	private LoginNotify $loginNotify;
 
 	public function __construct( Title $title, array $params, LoginNotify $loginNotify ) {
