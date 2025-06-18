@@ -134,7 +134,7 @@ class LoginNotify implements LoggerAwareInterface {
 	 * Set the logger.
 	 * @param LoggerInterface $logger The logger object.
 	 */
-	public function setLogger( LoggerInterface $logger ) {
+	public function setLogger( LoggerInterface $logger ): void {
 		$this->log = $logger;
 	}
 
