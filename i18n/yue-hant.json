@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ktchankt"
+		]
+	},
+	"echo-category-title-login-fail": "失敗嘅簽到嘗試",
+	"echo-pref-tooltip-login-fail": "我個戶口有失敗嘅簽到嘗試，話我知。",
+	"echo-category-title-login-success": "由唔熟悉嘅裝置簽到",
+	"echo-pref-tooltip-login-success": "有人由唔熟悉嘅裝置同IP地址簽到我個戶口，話我知。",
+	"loginnotify-primary-link": "幫手"
+}
