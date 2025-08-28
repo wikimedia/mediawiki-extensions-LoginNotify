@@ -15,14 +15,15 @@ class DeferredChecksJob extends Job {
 	public const TYPE_LOGIN_FAILED = 'failed';
 	public const TYPE_LOGIN_SUCCESS = 'success';
 
-	private UserFactory $userFactory;
-
 	/**
 	 * @param Title $title
 	 * @param array $params
 	 */
-	public function __construct( Title $title, array $params, UserFactory $userFactory ) {
-		$this->userFactory = $userFactory;
+	public function __construct(
+		Title $title,
+		array $params,
+		private readonly UserFactory $userFactory,
+	) {
 		parent::__construct( 'LoginNotifyChecks', $title, $params );
 	}
 

@@ -74,18 +74,11 @@ class LoginNotify implements LoggerAwareInterface {
 	/** We don't have data to confirm or deny this is a known system */
 	public const USER_NO_INFO = 'no info';
 
-	private BagOStuff $cache;
-	private ServiceOptions $config;
-	private LoggerInterface $log;
+	private readonly ServiceOptions $config;
 	/** @var string Salt for cookie hash. DON'T USE DIRECTLY, use getSalt() */
 	private $salt;
 	/** @var string */
 	private $secret;
-	private StatsFactory $stats;
-	private LBFactory $lbFactory;
-	private JobQueueGroup $jobQueueGroup;
-	private CentralIdLookup $centralIdLookup;
-	private AuthManager $authManager;
 	/** @var int|null */
 	private $fakeTime;
 
@@ -93,28 +86,17 @@ class LoginNotify implements LoggerAwareInterface {
 		return MediaWikiServices::getInstance()->get( 'LoginNotify.LoginNotify' );
 	}
 
-	/**
-	 * @param ServiceOptions $options
-	 * @param BagOStuff $cache
-	 * @param LoggerInterface $log
-	 * @param StatsFactory $stats
-	 * @param LBFactory $lbFactory
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param CentralIdLookup $centralIdLookup
-	 * @param AuthManager $authManager
-	 */
 	public function __construct(
 		ServiceOptions $options,
-		BagOStuff $cache,
-		LoggerInterface $log,
-		StatsFactory $stats,
-		LBFactory $lbFactory,
-		JobQueueGroup $jobQueueGroup,
-		CentralIdLookup $centralIdLookup,
-		AuthManager $authManager
+		private readonly BagOStuff $cache,
+		private LoggerInterface $log,
+		private readonly StatsFactory $stats,
+		private readonly LBFactory $lbFactory,
+		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly CentralIdLookup $centralIdLookup,
+		private readonly AuthManager $authManager
 	) {
 		$this->config = $options;
-		$this->cache = $cache;
 
 		if ( $this->config->get( 'LoginNotifySecretKey' ) !== null ) {
 			$this->secret = $this->config->get( 'LoginNotifySecretKey' );
@@ -122,12 +104,6 @@ class LoginNotify implements LoggerAwareInterface {
 			$globalSecret = $this->config->get( 'SecretKey' );
 			$this->secret = hash( 'sha256', $globalSecret . 'LoginNotify' );
 		}
-		$this->log = $log;
-		$this->stats = $stats;
-		$this->lbFactory = $lbFactory;
-		$this->jobQueueGroup = $jobQueueGroup;
-		$this->centralIdLookup = $centralIdLookup;
-		$this->authManager = $authManager;
 	}
 
 	/**
