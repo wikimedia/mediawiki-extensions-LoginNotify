@@ -4,8 +4,6 @@
  * @ingroup Extensions
  */
 
-// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName
-
 namespace LoginNotify;
 
 use MediaWiki\Auth\AuthenticationResponse;
