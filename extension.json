@@ -40,8 +40,7 @@
 		"main": {
 			"class": "LoginNotify\\Hooks",
 			"services": [
-				"UserFactory",
-				"LoginNotify.LoginNotify"
+				"UserFactory"
 			]
 		},
 		"echo": {
@@ -55,8 +54,7 @@
 		"LoginNotifyChecks": {
 			"class": "LoginNotify\\DeferredChecksJob",
 			"services": [
-				"UserFactory",
-				"LoginNotify.LoginNotify"
+				"UserFactory"
 			]
 		},
 		"LoginNotifyPurgeSeen": {
