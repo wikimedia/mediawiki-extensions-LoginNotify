@@ -19,10 +19,7 @@ class Hooks implements
 	LocalUserCreatedHook,
 	RecentChange_saveHook
 {
-	public function __construct(
-		private readonly UserFactory $userFactory,
-		private readonly LoginNotify $loginNotify,
-	) {
+	public function __construct( private readonly UserFactory $userFactory ) {
 	}
 
 	/**
@@ -45,12 +42,12 @@ class Hooks implements
 		}
 
 		if ( $ret->status === AuthenticationResponse::PASS ) {
-			$this->doSuccessfulLogin( $user );
+			self::doSuccessfulLogin( $user );
 		} elseif (
 			$ret->status === AuthenticationResponse::FAIL
 			&& $ret->message->getKey() !== 'login-throttled'
 		) {
-			$this->doFailedLogin( $user );
+			self::doFailedLogin( $user );
 		}
 		// Other statuses include Abstain, Redirect, or UI. We ignore such
 		// statuses.
@@ -62,10 +59,11 @@ class Hooks implements
 	 *
 	 * @param User $user The user who logged in.
 	 */
-	public function doSuccessfulLogin( User $user ) {
-		$this->loginNotify->clearCounters( $user );
-		$this->loginNotify->sendSuccessNotice( $user );
-		$this->loginNotify->recordKnownWithCookie( $user );
+	public static function doSuccessfulLogin( User $user ) {
+		$loginNotify = LoginNotify::getInstance();
+		$loginNotify->clearCounters( $user );
+		$loginNotify->sendSuccessNotice( $user );
+		$loginNotify->recordKnownWithCookie( $user );
 	}
 
 	/**
@@ -73,8 +71,9 @@ class Hooks implements
 	 *
 	 * @param User $user The user that failed to log in.
 	 */
-	public function doFailedLogin( User $user ) {
-		$this->loginNotify->recordFailure( $user );
+	public static function doFailedLogin( User $user ) {
+		$loginNotify = LoginNotify::getInstance();
+		$loginNotify->recordFailure( $user );
 	}
 
 	/**
@@ -88,7 +87,8 @@ class Hooks implements
 	 */
 	public function onLocalUserCreated( $user, $autocreated ) {
 		if ( !$autocreated ) {
-			$this->loginNotify->recordKnownWithCookie( $user );
+			$loginNotify = LoginNotify::getInstance();
+			$loginNotify->recordKnownWithCookie( $user );
 		}
 	}
 
@@ -96,7 +96,8 @@ class Hooks implements
 	 * @param RecentChange $recentChange
 	 */
 	public function onRecentChange_save( $recentChange ) {
+		$loginNotify = LoginNotify::getInstance();
 		$user = $this->userFactory->newFromUserIdentity( $recentChange->getPerformerIdentity() );
-		$this->loginNotify->recordKnown( $user );
+		$loginNotify->recordKnown( $user );
 	}
 }

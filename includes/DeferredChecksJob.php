@@ -23,7 +23,6 @@ class DeferredChecksJob extends Job {
 		Title $title,
 		array $params,
 		private readonly UserFactory $userFactory,
-		private readonly LoginNotify $loginNotify,
 	) {
 		parent::__construct( 'LoginNotifyChecks', $title, $params );
 	}
@@ -57,12 +56,14 @@ class DeferredChecksJob extends Job {
 		}
 		$resultSoFar = $this->params['resultSoFar'];
 
+		$loginNotify = LoginNotify::getInstance();
+
 		switch ( $checkType ) {
 			case self::TYPE_LOGIN_FAILED:
-				$this->loginNotify->recordFailureDeferred( $user, $subnet, $resultSoFar );
+				$loginNotify->recordFailureDeferred( $user, $subnet, $resultSoFar );
 				break;
 			case self::TYPE_LOGIN_SUCCESS:
-				$this->loginNotify->sendSuccessNoticeDeferred( $user, $subnet, $resultSoFar );
+				$loginNotify->sendSuccessNoticeDeferred( $user, $subnet, $resultSoFar );
 				break;
 			default:
 				throw new LogicException( 'Unknown check type ' . print_r( $checkType, true ) );

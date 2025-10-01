@@ -15,6 +15,7 @@ use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\User\CentralId\CentralIdLookup;
@@ -80,6 +81,10 @@ class LoginNotify implements LoggerAwareInterface {
 	private $secret;
 	/** @var int|null */
 	private $fakeTime;
+
+	public static function getInstance(): self {
+		return MediaWikiServices::getInstance()->get( 'LoginNotify.LoginNotify' );
+	}
 
 	public function __construct(
 		ServiceOptions $options,
