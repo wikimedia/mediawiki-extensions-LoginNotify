@@ -21,11 +21,15 @@ class PurgeSeen extends Maintenance {
 	}
 
 	public function execute() {
-		$loginNotify = LoginNotify::getInstance();
+		$loginNotify = $this->getLoginNotify();
 		$minId = $loginNotify->getMinExpiredId();
 		for ( ; $minId !== null; $this->waitForReplication() ) {
 			$minId = $loginNotify->purgeSeen( $minId );
 		}
+	}
+
+	private function getLoginNotify(): LoginNotify {
+		return $this->getServiceContainer()->getService( 'LoginNotify.LoginNotify' );
 	}
 }
 

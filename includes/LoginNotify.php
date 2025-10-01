@@ -82,6 +82,10 @@ class LoginNotify implements LoggerAwareInterface {
 	/** @var int|null */
 	private $fakeTime;
 
+	/**
+	 * @deprecated Since 1.45
+	 * @note Remove with care (T406094)
+	 */
 	public static function getInstance(): self {
 		return MediaWikiServices::getInstance()->get( 'LoginNotify.LoginNotify' );
 	}
