@@ -1,7 +1,7 @@
 <?php
 
 use LoginNotify\LoginNotify;
-use MediaWiki\CheckUser as CU;
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
@@ -408,7 +408,9 @@ class LoginNotifyTest extends MediaWikiIntegrationTestCase {
 		// Make a fake edit in CheckUser
 		$rc = $helper->makeEditRecentChange( $user, 'LoginNotifyTest',
 			1, 1, 1, wfTimestampNow(), 0, 0 );
-		CU\Hooks::updateCheckUserData( $rc );
+		/** @var CheckUserInsert $checkUserInsert */
+		$checkUserInsert = $this->getServiceContainer()->get( 'CheckUserInsert' );
+		$checkUserInsert->updateCheckUserData( $rc );
 
 		// Record failed login attempt from the same IP
 		$this->inst->recordFailure( $user );
@@ -430,7 +432,9 @@ class LoginNotifyTest extends MediaWikiIntegrationTestCase {
 		// Make a fake edit in CheckUser
 		$rc = $helper->makeEditRecentChange( $user, 'LoginNotifyTest',
 			1, 1, 1, wfTimestampNow(), 0, 0 );
-		CU\Hooks::updateCheckUserData( $rc );
+		/** @var CheckUserInsert $checkUserInsert */
+		$checkUserInsert = $this->getServiceContainer()->get( 'CheckUserInsert' );
+		$checkUserInsert->updateCheckUserData( $rc );
 
 		// Change the IP and record a failure
 		RequestContext::getMain()->getRequest()->setIP( '127.1.0.0' );
@@ -507,7 +511,9 @@ class LoginNotifyTest extends MediaWikiIntegrationTestCase {
 		// Make a fake edit in CheckUser
 		$rc = $helper->makeEditRecentChange( $user, 'LoginNotifyTest',
 			1, 1, 1, wfTimestampNow(), 0, 0 );
-		CU\Hooks::updateCheckUserData( $rc );
+		/** @var CheckUserInsert $checkUserInsert */
+		$checkUserInsert = $this->getServiceContainer()->get( 'CheckUserInsert' );
+		$checkUserInsert->updateCheckUserData( $rc );
 
 		// Change the IP and record a success
 		RequestContext::getMain()->getRequest()->setIP( '127.1.0.0' );
