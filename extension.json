@@ -56,7 +56,8 @@
 			"class": "LoginNotify\\PurgeSeenJob",
 			"services": [
 				"LoginNotify.LoginNotify"
-			]
+			],
+			"needsPage": false
 		}
 	},
 	"ServiceWiringFiles": [
