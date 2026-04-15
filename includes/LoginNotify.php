@@ -18,7 +18,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\User;
-use MWCryptRand;
+use MediaWiki\Utils\MWCryptRand;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
