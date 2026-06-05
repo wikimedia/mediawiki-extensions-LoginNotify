@@ -514,7 +514,7 @@ class LoginNotifyTest extends MediaWikiIntegrationTestCase {
 		$this->inst->recordKnown( $user );
 		$this->assertSeenCount( 2 );
 
-		$this->runJobs();
+		$this->runJobs( [ 'minJobs' => 1 ], [ 'type' => 'LoginNotifyPurgeSeen' ] );
 		$this->assertSeenCount( 1 );
 	}
 
