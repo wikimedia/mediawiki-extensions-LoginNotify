@@ -730,8 +730,7 @@ class LoginNotify implements LoggerAwareInterface {
 		$message = '{count} failed login attempts for {user} from an unknown system';
 		if ( $count ) {
 			$this->incrStats( 'failures_total',
-				[ 'status' => 'fail', 'kind' => 'unknown', 'notified' => 'yes' ],
-				'fail.unknown.notifications'
+				[ 'status' => 'fail', 'kind' => 'unknown', 'notified' => 'yes' ]
 			);
 			$this->sendNotice( $user, 'login-fail-new', $count );
 			$message .= ', sending notification';
@@ -762,8 +761,7 @@ class LoginNotify implements LoggerAwareInterface {
 		);
 		if ( $count ) {
 			$this->incrStats( 'failures_total',
-				[ 'status' => 'fail', 'kind' => 'known', 'notified' => 'yes' ],
-				'fail.known.notifications'
+				[ 'status' => 'fail', 'kind' => 'known', 'notified' => 'yes' ]
 			);
 			$this->sendNotice( $user, 'login-fail-known', $count );
 		}
@@ -847,8 +845,7 @@ class LoginNotify implements LoggerAwareInterface {
 				[ 'user' => $user->getName() ]
 			);
 			$this->incrStats( 'failures_total',
-				[ 'status' => 'fail', 'kind' => 'noaccount', 'notified' => 'no' ],
-				'fail.muted.total'
+				[ 'status' => 'fail', 'kind' => 'noaccount', 'notified' => 'no' ]
 			);
 			return;
 		}
@@ -859,8 +856,7 @@ class LoginNotify implements LoggerAwareInterface {
 				[ 'user' => $user->getName() ]
 			);
 			$this->incrStats( 'failures_total',
-				[ 'status' => 'fail', 'kind' => 'cantauth', 'notified' => 'no' ],
-				'fail.muted.total'
+				[ 'status' => 'fail', 'kind' => 'cantauth', 'notified' => 'no' ]
 			);
 			return;
 		}
@@ -886,13 +882,11 @@ class LoginNotify implements LoggerAwareInterface {
 		if ( $result === self::USER_KNOWN ) {
 			// No need to notify
 			$this->incrStats( 'successes_total',
-				[ 'status' => 'success', 'kind' => 'known', 'notified' => 'no' ],
-				'success.muted.total'
+				[ 'status' => 'success', 'kind' => 'known', 'notified' => 'no' ]
 			);
 		} elseif ( $result === self::USER_NOT_KNOWN ) {
 			$this->incrStats( 'successes_total',
-				[ 'status' => 'success', 'kind' => 'unknown', 'notified' => 'yes' ],
-				'success.notifications'
+				[ 'status' => 'success', 'kind' => 'unknown', 'notified' => 'yes' ]
 			);
 			$this->sendNotice( $user, 'login-success' );
 		}
@@ -905,23 +899,17 @@ class LoginNotify implements LoggerAwareInterface {
 	 *
 	 * @param string $metric Name of the Prometheus metric
 	 * @param array $labels Prometheus metric labels in the format: name => value
-	 * @param string $statsdMetric Metric name of the legacy statsd metric
 	 */
 	private function incrStats(
 		$metric,
-		$labels,
-		$statsdMetric
+		$labels
 	) {
-		$component = "loginnotify";
-
-		$stat = $this->stats->withComponent( $component );
+		$stat = $this->stats->withComponent( 'loginnotify' );
 		$counter = $stat->getCounter( $metric );
 
 		foreach ( $labels as $label => $value ) {
 			$counter->setLabel( $label, $value );
 		}
-
-		$counter->copyToStatsdAt( $component . "." . $statsdMetric );
 
 		$counter->increment();
 	}
