@@ -4,7 +4,6 @@ declare( strict_types=1 );
 namespace LoginNotify\Maintenance;
 
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use MediaWiki\Utils\BatchRowIterator;
 use MediaWiki\WikiMap\WikiMap;
@@ -47,7 +46,7 @@ class MigratePreferences extends LoggedUpdateMaintenance {
 	 */
 	protected function doDBUpdates() {
 		$dbr = $this->getDB( DB_REPLICA, 'vslow' );
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
 
 		$iterator = new BatchRowIterator( $dbr,
 			[ 'user_properties', 'user' ],
@@ -112,7 +111,7 @@ class MigratePreferences extends LoggedUpdateMaintenance {
 	private function updateUser( $userRow, array &$options ) {
 		if ( $userRow->user_id && $options ) {
 			$user = User::newFromRow( $userRow );
-			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+			$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 			foreach ( $options as $option => $value ) {
 				$userOptionsManager->setOption( $user, $option, $value );
 			}

@@ -8,7 +8,6 @@ use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\UserFactory;
 
@@ -61,14 +60,15 @@ class LoginAttempt extends Maintenance {
 		$request->setHeader( 'User-Agent', $ua );
 		RequestContext::getMain()->setRequest( $request );
 
-		$user = $this->getServiceContainer()->getUserFactory()
+		$services = $this->getServiceContainer();
+		$user = $services->getUserFactory()
 			->newFromName( $username, UserFactory::RIGOR_USABLE );
 		if ( !$user || !$user->isRegistered() ) {
 			$this->output( "User {$username} does not exist!\n" );
 			return;
 		}
 
-		$hookRunner = new HookRunner( MediaWikiServices::getInstance()->getHookContainer() );
+		$hookRunner = new HookRunner( $services->getHookContainer() );
 		for ( $i = 0; $i < $reps; $i++ ) {
 			if ( $success ) {
 				$res = AuthenticationResponse::newPass( $username );
