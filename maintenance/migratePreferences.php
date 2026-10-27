@@ -27,8 +27,7 @@ class MigratePreferences extends LoggedUpdateMaintenance {
 	private const OPTIONS_FAKE_TRUTH = 2;
 	private const OPTIONS_FAKE_FALSE = 'fake-false';
 
-	/** @var bool[] */
-	private static $mapping = [
+	private const OPTIONS_MAPPING = [
 		self::OPTIONS_FAKE_FALSE => false,
 		self::OPTIONS_FAKE_TRUTH => true,
 	];
@@ -88,8 +87,8 @@ class MigratePreferences extends LoggedUpdateMaintenance {
 					$rows = 0;
 				}
 			}
-			if ( isset( self::$mapping[ $value ] ) ) {
-				$optionsToUpdate[$option] = self::$mapping[ $value ];
+			if ( isset( self::OPTIONS_MAPPING[ $value ] ) ) {
+				$optionsToUpdate[$option] = self::OPTIONS_MAPPING[ $value ];
 			}
 			$lastRow = $row;
 		}
